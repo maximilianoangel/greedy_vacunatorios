@@ -16,6 +16,14 @@ A=[[1,1,1,1,0,0,0,0,0,0,0], #matriz con las comunas que se satisfacen al constru
 C=[60,30,60,70,130,50,70,60,50,80,40] #costos
 X=[0,0,0,0,0,0,0,0,0,0,0,] #variable de decision
 prob=[] #arreglo donde se calcularan las probabilidades
+def FO(X,indice):#Calcula funcion objetivo
+    i=0
+    aux=0
+    while i<11:
+        aux=C[i]*X[i]+aux
+        i=i+1
+    print("La solucion de la iteracion " +str(indice) +" tiene un valor de FO: "+str(aux))
+
 def sol(decision): #confirma si con los valores en X se satisface la restriccion
     j=0
     while j<11:
@@ -53,7 +61,7 @@ def probabilidad(prob,costo,A):
             proba=18
         prob.append(int(proba))
         i=i+1
-def ruleta(eleccion):
+def ruleta(eleccion):# Seleccion tiene un largo 100, las comunas se repiten segun su probabilidad.
     seleccion=[1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,6,7,8,9,10,11,1,2,3,4,6,7,8,9,11,2,3,4,6,7,8,9,11,2,3,6,8,9,11,2,3,9,11,9,9,9,9,9,9,9,9]
     aux=seleccion[eleccion-1]
     return aux-1
@@ -71,6 +79,7 @@ def greedy(iteracion,it):
             semilla=semilla+1
             i=i+1
     print("solucion en la iteracion " + str(it) + ": " + str(X))
+    FO(X,it)
     aux=0
     while aux<11: #limpia la variable X
         X[aux]=0
