@@ -54,8 +54,8 @@ def probabilidad(prob,costo,A):
         prob.append(int(proba))
         i=i+1
 def ruleta(eleccion):
-    prob=[1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,6,7,8,9,10,11,1,2,3,4,6,7,8,9,11,2,3,4,6,7,8,9,11,2,3,6,8,9,11,2,3,9,11,9,9,9,9,9,9,9,9]
-    aux=prob[eleccion-1]
+    seleccion=[1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,6,7,8,9,10,11,1,2,3,4,6,7,8,9,11,2,3,4,6,7,8,9,11,2,3,6,8,9,11,2,3,9,11,9,9,9,9,9,9,9,9]
+    aux=seleccion[eleccion-1]
     return aux-1
 def greedy(iteracion,it):
     semilla=1
@@ -78,9 +78,9 @@ def greedy(iteracion,it):
     return i
 
 probabilidad(prob,C,A)
-print(prob)
+print("probabilidad de que se elija cada comuna: " +str(prob))
 i=0
 aux=0
 while i<20:
-    aux=greedy(i+aux,i+1) #aux sirve para dispersar las semillas.
+    aux=greedy(i+aux,i+1)+aux #aux sirve para dispersar las semillas.
     i=i+1
